@@ -1,0 +1,19 @@
+body {
+  /* padding: 1rem; */
+}
+
+* {
+  /* margin: 0.2rem; */
+  border: 1px solid gray;
+}
+
+/* .border {
+  padding: 1rem;
+  width: 20rem;
+}
+
+.border-bottom,
+#input {
+  margin-bottom: 1.5rem;
+  width: 20rem;
+} */
