@@ -3,6 +3,8 @@ package com.ddoooe.study_servlets;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.ddoooe.study_servlets.beans.MemberBean;
+
 public class DatasInfor {
     public HashMap<String, String> getSearchFormData() {
         HashMap<String, String> searchForm = new HashMap<String, String>();
@@ -29,5 +31,14 @@ public class DatasInfor {
         bundlesData.put("searchForm", searchForm);
         bundlesData.put("tablesListWithString", tablesListWithString);
         return bundlesData;
+    }
+    
+    public MemberBean getDataWithMemberBean(){
+        MemberBean memberBean = new MemberBean();
+        memberBean.setFirstName("Mark");
+        memberBean.setSecondName("Otto");
+        memberBean.setHandleName("@mdo");
+        
+        return memberBean;
     }
 }

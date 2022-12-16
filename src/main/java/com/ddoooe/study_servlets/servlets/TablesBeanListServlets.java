@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.ddoooe.study_servlets.DatasInfor;
+import com.ddoooe.study_servlets.beans.MemberBean;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,16 +18,20 @@ import jakarta.servlet.http.HttpServletResponse;
 public class TablesBeanListServlets extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         DatasInfor datasInfor = new DatasInfor();
-        ArrayList<String> tablesListWithString = datasInfor.getTablesListWithString();
-        PrintWriter printWriter = response.getWriter();
+        MemberBean memberBean = datasInfor.getDataWithMemberBean();
 
-        HashMap<String, String> searchForm = datasInfor.getSearchFormData();
+        System.out.println(memberBean.getFirstName() + " " 
+        + memberBean.getSecondName() + " " + memberBean.getHandleName());
+        
+        // Display areas
+        PrintWriter printWriter = response.getWriter();
+        response.setContentType("text/html;charset=UTF-8");
+        // HashMap<String, String> searchForm = datasInfor.getSearchFormData();
         printWriter.println("<html lang='en'>");
         printWriter.println("<head>");
         printWriter.println("<meta charset='UTF-8' />");
-        printWriter.println("<title>"+searchForm.get("search_key")+"</title>");
+        printWriter.println("<title>tablesBeanListServlets</title>");
         printWriter.println(" <link");
         printWriter.println("href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css'");
         printWriter.println("rel='stylesheet'");
@@ -35,9 +40,13 @@ public class TablesBeanListServlets extends HttpServlet {
         printWriter.println("/>");
         printWriter.println("<link rel='stylesheet' href='./css/commons.css' />");
         printWriter.println("</head>");
+
         printWriter.println("<body>");
         printWriter.println(" <div class='container'>");
-        printWriter.println("<div class='fs-3'>Tables Normal with Beans</div>");
+        printWriter.println("<div class='fs-3'>Tables with Beans</div>");
+        printWriter.println("<div class='fs-4'>"+memberBean.getFirstName() + " "
+        + memberBean.getSecondName() + " " + memberBean.getHandleName()+"</div>");
+
         printWriter.println("<table class='table'>");
         printWriter.println("<thead>");
         printWriter.println("<tr>");
@@ -48,13 +57,7 @@ public class TablesBeanListServlets extends HttpServlet {
         printWriter.println(" </tr>");
         printWriter.println("</thead>");
         printWriter.println("<tbody>");
-        for(int i = 0; i < tablesListWithString.size(); i++){
-            printWriter.println("<tr>");
-            printWriter.println(" <th scope=''>"+(i+1)+"</th>");
-            String handle = tablesListWithString.get(i);
-            printWriter.println(" <td>"+handle+"</td>");
-            printWriter.println("</tr>");
-        }
+
         printWriter.println("</tbody>");
         printWriter.println("</table>");
         printWriter.println(" </div>");
