@@ -30,9 +30,13 @@ public class DatasInfor {
         HashMap<String, Object> bundlesData = new HashMap<>();
         bundlesData.put("searchForm", searchForm);
         bundlesData.put("tablesListWithString", tablesListWithString);
+
+        bundlesData.put("dataWithMemberBean", datasInfor.getDataWithMemberBean());
+        bundlesData.put("dataListWithMemberBean", datasInfor.getDataListWithMemberBean());
+
         return bundlesData;
     }
-    
+
     public MemberBean getDataWithMemberBean(){
         MemberBean memberBean = new MemberBean();
         memberBean.setFirstName("Mark");
@@ -40,5 +44,28 @@ public class DatasInfor {
         memberBean.setHandleName("@mdo");
         
         return memberBean;
+    }
+
+    public ArrayList<MemberBean> getDataListWithMemberBean(){
+        ArrayList<MemberBean> membersList = new ArrayList<>();
+        MemberBean memberBean = new MemberBean();
+        memberBean.setFirstName("Mark");
+        memberBean.setSecondName("Otto");
+        memberBean.setHandleName("@mdo");
+        membersList.add(memberBean);
+
+        MemberBean memberBean02 = new MemberBean();
+        memberBean02.setFirstName("Jacob");
+        memberBean02.setSecondName("Thornton");
+        memberBean02.setHandleName("@fat");
+        membersList.add(memberBean02);
+
+        MemberBean memberBean03 = new MemberBean();
+        memberBean03.setFirstName("Larry");
+        memberBean03.setSecondName("Bird");
+        memberBean03.setHandleName("@twitter");
+        membersList.add(memberBean03);
+
+        return membersList;
     }
 }

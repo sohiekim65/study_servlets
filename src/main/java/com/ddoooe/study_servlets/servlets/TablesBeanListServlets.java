@@ -18,16 +18,17 @@ import jakarta.servlet.http.HttpServletResponse;
 public class TablesBeanListServlets extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       
         DatasInfor datasInfor = new DatasInfor();
-        MemberBean memberBean = datasInfor.getDataWithMemberBean();
+        // MemberBean memberBean = datasInfor.getDataWithMemberBean();
+        HashMap<String, Object> bundlesData = datasInfor.getBundlesData();
 
-        System.out.println(memberBean.getFirstName() + " " 
-        + memberBean.getSecondName() + " " + memberBean.getHandleName());
+        // System.out.println(memberBean.getFirstName() + " " 
+        // + memberBean.getSecondName() + " " + memberBean.getHandleName());
         
         // Display areas
         PrintWriter printWriter = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");
-        // HashMap<String, String> searchForm = datasInfor.getSearchFormData();
         printWriter.println("<html lang='en'>");
         printWriter.println("<head>");
         printWriter.println("<meta charset='UTF-8' />");
@@ -44,19 +45,36 @@ public class TablesBeanListServlets extends HttpServlet {
         printWriter.println("<body>");
         printWriter.println(" <div class='container'>");
         printWriter.println("<div class='fs-3'>Tables with Beans</div>");
-        printWriter.println("<div class='fs-4'>"+memberBean.getFirstName() + " "
-        + memberBean.getSecondName() + " " + memberBean.getHandleName()+"</div>");
+
+        MemberBean memberBean2 = (MemberBean) bundlesData.get("dataWithMemberBean");
+        printWriter.println("<div class='fs-4'>"+memberBean2.getFirstName() + " "
+        + memberBean2.getSecondName() + " " + memberBean2.getHandleName()+"</div>");
+        // printWriter.println("<div class='fs-4'>"+memberBean.getFirstName() + " "
+        // + memberBean.getSecondName() + " " + memberBean.getHandleName()+"</div>");
 
         printWriter.println("<table class='table'>");
         printWriter.println("<thead>");
         printWriter.println("<tr>");
         printWriter.println(" <th scope=''>#</th>");
-        // printWriter.println(" <th scope=''>First</th>");
-        // printWriter.println(" <th scope=''>Last</th>");
+        printWriter.println(" <th scope=''>First</th>");
+        printWriter.println(" <th scope=''>Last</th>");
         printWriter.println("  <th scope=''>Handle</th>");
         printWriter.println(" </tr>");
         printWriter.println("</thead>");
         printWriter.println("<tbody>");
+
+        ArrayList<MemberBean> dataListWithMemberBean = (ArrayList<MemberBean>) bundlesData.get("dataListWithMemberBean");
+
+        for(int i = 0; i < dataListWithMemberBean.size(); i++){
+            MemberBean memberBean = dataListWithMemberBean.get(i);
+            printWriter.println("<tr>");
+            printWriter.println(" <th scope=''>"+(i+1)+"</th>");
+            String handle = memberBean.getHandleName();
+            printWriter.println(" <td>"+memberBean.getFirstName()+"</td>");
+            printWriter.println(" <td>"+memberBean.getSecondName()+"</td>");
+            printWriter.println(" <td>"+handle+"</td>");
+            printWriter.println("</tr>");
+        }
 
         printWriter.println("</tbody>");
         printWriter.println("</table>");
