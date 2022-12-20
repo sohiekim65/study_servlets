@@ -12,30 +12,23 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 // /session/createServlets?username=yojulab&password=1234
-@WebServlet(urlPatterns = "/session/createServlets")
-public class CreateSessionServlets extends HttpServlet {
+@WebServlet(urlPatterns = "/session/getServlets")
+public class GetSessionServlets extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 한글 처리
         response.setContentType("text/html;charset=UTF-8");
         
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
         // display
         PrintWriter printWriter = response.getWriter();
-        printWriter.println("<div>Create Session Servlets</div>");
+        printWriter.println("<div>Get Session Servlets</div>");
         
         // login
-        if("yojulab".equals(username) && "1234".equals(password)){
-            HttpSession httpSession = request.getSession();
-            httpSession.setAttribute("username", username);
-            httpSession.setAttribute("password", password);
-            printWriter.println("<div>"+username+", "+password+"</div>");
-        } else {
-            // login 실패
-            printWriter.println("<div>Faild</div>");
-        }
+        HttpSession httpSession = request.getSession();
+        String username = (String) httpSession.getAttribute("username");
+        String password = (String) httpSession.getAttribute("password");
+
+        printWriter.println("<div>"+username+", "+password+"</div>");
         printWriter.close();
     }
 }
