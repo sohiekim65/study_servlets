@@ -19,6 +19,7 @@
         <a href="" class="nav-link">Home</a>
         <a href="" class="nav-link">Feature</a>
         <a href="" class="nav-link">Pricing</a>
+        
       </div>
     </nav>
     <hr />
