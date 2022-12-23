@@ -14,6 +14,12 @@
     <link rel="stylesheet" href="./css/commons.css" />
   </head>
   <body>
+    <div>Check Login</div>
+    <%-- session. 으로 이름 맞춰주기 --%>
+    <div>username : <%= session.getAttribute("username") %></div>
+    <div>password : <%= session.getAttribute("password") %></div>
+    <!-- jsessionId 출력 -->
+    <div>ID : <%= session.getId() %></div>
     <% int day = 3; %>
     <form action="">
       <div class="container">

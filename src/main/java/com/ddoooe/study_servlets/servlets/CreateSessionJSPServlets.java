@@ -45,7 +45,11 @@ public class CreateSessionJSPServlets extends HttpServlet {
                 httpSession.setAttribute("username", username);
                 httpSession.setAttribute("password", password);
             }
+            
+            System.out.println(httpSession.getAttribute("username"));
+            System.out.println(httpSession.getId());
             path = "/session/checkLogin.jsp";
+        
         } else {
             // logout
             // dispatcher의 두번 생성하지 말고 String 변수를 만들어 사용
@@ -54,6 +58,9 @@ public class CreateSessionJSPServlets extends HttpServlet {
             if(httpSession != null){
                 httpSession.invalidate();
             }
+            // invalidate해서 값이 없기 때문에 println할 수 가 없음
+            System.out.println(httpSession.getAttribute("username"));
+            System.out.println(httpSession.getId());
             path = "/session/checkLogout.jsp";
         }
         // 그리고 dispatcher에 변수를 넘김

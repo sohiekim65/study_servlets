@@ -8,10 +8,12 @@
   </head>
 
   <body>
+    
     <div>Check Login</div>
-    <div>username : yojulab</div>
-    <div>password : 1234</div>
+    <%-- session. 으로 이름 맞춰주기 --%>
+    <div>username : <%= session.getAttribute("username") %></div>
+    <div>password : <%= session.getAttribute("password") %></div>
     <!-- jsessionId 출력 -->
-    <div>ID :</div>
+    <div>ID : <%= session.getId() %></div>
   </body>
 </html>
