@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns = "/polls/PollServlet")
-public class DetailServlets extends HttpServlet {
+public class PollDetailServlets extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -33,6 +33,7 @@ public class DetailServlets extends HttpServlet {
             System.out.println(question.get("QUESTIONS_UID"));
             System.out.println(question.get("QUESTIONS"));
             System.out.println(question.get("ORDERS"));
+            pollWithDB.getAnswer(questions_Uid);
         } catch (SQLException e) {
             e.printStackTrace();
         }
