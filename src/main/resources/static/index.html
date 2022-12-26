@@ -34,17 +34,36 @@
       <a href="/cookies/createServlets">CreateCookieServlets</a>
     </div>
     <div>
-      <a href="/cookies/getAndDeleteServlets">GetAndDeleteServlets</a>
+      <a href="/cookies/getAndDeleteServlets"
+        >/cookies/getAndDeleteServlets GetAndDeleteServlets</a
+      >
     </div>
     <div>
-      <a href="/session/createServlets">CreateSessionServlets</a>
+      <a href="/session/createServlets"
+        >/session/createServlets CreateSessionServlets</a
+      >
     </div>
     <div>
       <label for=""></label>
-      <a href="/dispatcherServlets">DispatcherServlets</a>
+      <a href="/dispatcherServlets">/dispatcherServlets DispatcherServlets</a>
     </div>
     <div>
-      <a href="/dispatcherJSPServlets">DispatcherJSPServlets</a>
+      <a href="/dispatcherJSPServlets"
+        >/dispatcherJSPServlets DispatcherJSPServlets</a
+      >
+    </div>
+    <div>
+      <a href="/session/createServlets?username=yojulab&password=1234"
+        >/session/createServlets?username=yojulab&password=1234
+        CreateSessionJSPServlets</a
+      >
+    </div>
+    <div>
+      <form action="/session/createServlets" method="post">
+        <input type="text" name="username" id="" value="yojulab" />
+        <input type="text" name="password" id="" value="1234" />
+        <button>/session/CreateJSPServlets with post</button>
+      </form>
     </div>
     <div>Cases</div>
     <div>
